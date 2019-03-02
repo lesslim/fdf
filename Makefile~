@@ -1,0 +1,12 @@
+NAME = fdf
+
+SRC = *.c
+OBJ = *.o
+
+CC = gcc
+CFLAGS = -Werror -Wextra -Wall
+
+all: $(NAME)
+
+$(NAME):
+    
