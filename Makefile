@@ -12,10 +12,31 @@
 
 NAME = fdf
 
-FLAGS = -Wextra -Werror -Wall
+CFLAGS = -Wall -Wextra -Werror 
 
-SRC = *.c
+SRCS = *.c
+
+OBJS = *.o
+
+MLX		= ./miniLibX/
+MLX_LIB	= $(addprefix $(MLX),mlx.a)
+MLX_INC	= -I ./miniLibX
+MLX_LNK	= -L ./miniLibX -l mlx -framework OpenGL -framework AppKit
+
+
+all: $(NAME)
+
+$(NAME):
+	make -C libft objs
+	gcc $(CFLAGS) -c $(SRCS)
+	ar rc $(NAME) $(OBJS) libft/*.o
+	ranlib $(NAME)
+
+clean:
+	rm -f $(OBJS)
+	rm -f libft/$(OBJS)
 
 fclean: clean
+	rm -f $(NAME)
 
 re: fclean all
