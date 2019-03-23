@@ -1,22 +1,26 @@
-#******************************************************************************#
+# **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rberon-s <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: rberon-s <rberon-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/14 16:32:28 by rberon-s          #+#    #+#              #
-#    Updated: 2019/02/14 16:32:30 by rberon-s         ###   ########.fr        #
+#    Updated: 2019/03/23 15:10:28 by rberon-s         ###   ########.fr        #
 #                                                                              #
-#******************************************************************************#
+# **************************************************************************** #
 
 NAME = fdf
 
-CFLAGS = -Wall -Wextra -Werror 
+CFLAGS = -Wall -Wextra -Werror -g
 
-SRCS = *.c
+MLXFLAGS = 
 
-OBJS = *.o
+SRCS = main.c\
+
+OBJS = $(SRCS:.c=.o)
+
+OBJS = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 
 MLX		= ./miniLibX/
 MLX_LIB	= $(addprefix $(MLX),mlx.a)
@@ -33,10 +37,12 @@ $(NAME):
 	ranlib $(NAME)
 
 clean:
-	rm -f $(OBJS)
+	rm -rf $(OBJ_DIR)
 	rm -f libft/$(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -rf $(NAME)
 
 re: fclean all
+
+.PHONY: re, fclean, clean, all
