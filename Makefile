@@ -6,7 +6,7 @@
 #    By: rberon-s <rberon-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/14 16:32:28 by rberon-s          #+#    #+#              #
-#    Updated: 2019/03/23 15:10:28 by rberon-s         ###   ########.fr        #
+#    Updated: 2019/04/03 16:01:45 by rberon-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ clean:
 	rm -f libft/$(OBJS)
 
 fclean: clean
+	@make -C $(LIB_DIR) fclean
 	@rm -rf $(NAME)
 
 re: fclean all
